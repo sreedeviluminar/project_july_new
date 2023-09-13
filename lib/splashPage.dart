@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   //to run an app
@@ -13,7 +14,7 @@ class SplashPage extends StatelessWidget {
   //to create our widget tree we use build function
   Widget build(BuildContext context) {
     //BuildContext - used to locate widgets on the widget tree and monitor their actions
-    return const Scaffold(
+    return  Scaffold(
       backgroundColor: Colors.black,
       body: Center(
         child: Column(
@@ -39,10 +40,15 @@ class SplashPage extends StatelessWidget {
             ),
             Text(
               "My Application",
-              style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold),
+              style: GoogleFonts.dancingScript(
+                fontSize: 30,
+                color: Colors.lightBlueAccent,
+                fontWeight: FontWeight.bold
+              ),
+              // style: TextStyle(
+              //     fontSize: 20,
+              //     color: Colors.blue,
+              //     fontWeight: FontWeight.bold),
             )
           ],
         ),
