@@ -3,26 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'loginPage.dart';
 void main() {
-  //to run an app
   runApp(MaterialApp(
-    // default theme of our flutter app
-    home: Splash2(), // initial page to be launched while running an app
+    home: Splash2(),
   ));
 }
 class Splash2 extends StatefulWidget{
   @override
-  State<StatefulWidget> createState() => Splash2State();
+  State<StatefulWidget> createState() => Splash2State(); // define an initial state for the page
 }
-class Splash2State extends State {
 
+class Splash2State extends State {
   @override
-  void initState() {
+  void initState() {                // what should do when this page  is launched
     Timer(Duration(seconds: 4), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context)=> Login_Page()));
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     //BuildContext - used to locate widgets on the widget tree and monitor their actions

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_july_new/registrationPage.dart';
+
+import 'home.dart';
+
 //
 // void main() {
 //   runApp(MaterialApp(
@@ -7,6 +11,12 @@ import 'package:google_fonts/google_fonts.dart';
 //   ));
 // }
 class Login_Page extends StatelessWidget {
+  String username = "admin@gmail.com";
+  String password = 'abc123';
+
+  final uname_controller = TextEditingController();
+  final pass_controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,47 +35,59 @@ class Login_Page extends StatelessWidget {
             Text(
               "My App July",
               style: GoogleFonts.cabinSketch(
-                fontSize: 35,
-                fontWeight: FontWeight.bold,
-                color: Colors.teal
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 18.0),
+              child: TextField(
+                controller: uname_controller,
+                decoration: const InputDecoration(
+                    hintText: "UserName",
+                    labelText: "UserName",
+                    helperText: 'UserName Must be an Email',
+                    prefixIcon: Icon(Icons.account_circle),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)))),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 18.0),
+            // SizedBox(height: 15,),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 15.0),
               child: TextField(
-                decoration:InputDecoration(
-                  hintText: "UserName",
-                  labelText: "UserName",
-                  helperText: 'UserName Must be an Email',
-                  prefixIcon: Icon(Icons.account_circle),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                        Radius.circular(15.0))
-                  )
-                ),
-              ),
-            ),
-           // SizedBox(height: 15,),
-            const Padding(
-              padding: EdgeInsets.only(bottom: 15.0),
-              child: TextField(
-                decoration:InputDecoration(
+                obscureText: true,
+                obscuringCharacter: '*',
+                controller: pass_controller,
+                decoration: const InputDecoration(
                     hintText: "PassWord",
                     labelText: "PassWord",
                     helperText: 'Password Must Contain 6 characters',
                     prefixIcon: Icon(Icons.password),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                            Radius.circular(15.0))
-                    )
-                ),
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)))),
               ),
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  //String userip = uname_controller.text;
+                  if (username == uname_controller.text &&
+                      password == pass_controller.text) {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text(
+                          'Invalid username/ Password or the Fields are empty'),
+                      backgroundColor: Colors.red,
+                    ));
+                  }
+                },
                 child: const Text("Login")),
             TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => RegistrationPage()));
+                },
                 child: const Text('Not a User? SignUp Here!!!!'))
           ],
         ),
