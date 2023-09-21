@@ -28,7 +28,12 @@ class ListView1 extends StatelessWidget {
             leading: CircleAvatar(
                 backgroundImage: AssetImage("assets/images/person.jpeg")),
             title: Text('Product 1'),
-            subtitle: Text("This is a sample subtitle"),
+            subtitle: Row(
+              children: [
+                Icon(Icons.read_more),
+                Text("This is a sample subtitle"),
+              ],
+            ),
             trailing: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
