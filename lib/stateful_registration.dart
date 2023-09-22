@@ -11,7 +11,7 @@ class _Reg_statefulState extends State<Reg_stateful> {
   final formkey = GlobalKey<FormState>();
   String? pass;
   bool passwordhidden = true;//this means password is hidden
-
+  bool cpasshidden = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,8 +105,22 @@ class _Reg_statefulState extends State<Reg_stateful> {
                       return null;
                     }
                   },
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(), hintText: 'Password'),
+                  obscureText: cpasshidden,
+                  obscuringCharacter: "*",
+                  decoration:  InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Password',
+                  suffixIcon: IconButton(onPressed: (){
+                    setState(() {
+                      if(cpasshidden ==true){
+                        cpasshidden = false;
+                      }else{
+                        cpasshidden= true;
+                      }
+                    });
+                  },
+                      icon: Icon(cpasshidden== true?
+                      Icons.visibility_off_sharp:Icons.visibility))),
                 ),
               ),
               ElevatedButton(
