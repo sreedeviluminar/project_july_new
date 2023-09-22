@@ -30,7 +30,15 @@ class ListView2 extends StatelessWidget {
     "assets/images/ramen.png",
     "assets/images/salad.png"
   ];
-
+//
+  var icons = [
+    Icons.ac_unit,
+    Icons.add,
+    Icons.widgets,
+    Icons.ac_unit,
+    Icons.account_box,
+    Icons.yard
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,6 +52,8 @@ class ListView2 extends StatelessWidget {
                 title: Text(title[index]),
                 subtitle: Text('${subti[index]}'),
                 leading: Image.asset(images[index]),
+               // trailing: Icon(icons[index]),
+                trailing: Icon(Icons.shopping_cart),
               ),
             )),
       ),

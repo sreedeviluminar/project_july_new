@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:project_july_new/stateful_login.dart';
-
+   void main(){
+     runApp(MaterialApp(home: Reg_stateful(),));
+   }
 class Reg_stateful extends StatefulWidget {
   @override
   State<Reg_stateful> createState() => _Reg_statefulState();
 }
-
 class _Reg_statefulState extends State<Reg_stateful> {
   final formkey = GlobalKey<FormState>();
   String? pass;
+  bool passwordhidden = true;//this means password is hidden
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,14 +20,17 @@ class _Reg_statefulState extends State<Reg_stateful> {
           key: formkey,
           child: Column(
             children: [
-              Image.asset("assets/icons/tree.png",height: 200,width: 150,),
+              Image.asset(
+                "assets/icons/tree.png",
+                height: 200,
+                width: 150,
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   keyboardType: TextInputType.name,
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Name'),
+                      border: OutlineInputBorder(), hintText: 'Name'),
                 ),
               ),
               Padding(
@@ -32,6 +38,7 @@ class _Reg_statefulState extends State<Reg_stateful> {
                 child: TextFormField(
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(), hintText: 'Username'),
+
                   ///here the value entered at text form field will stored at uname
                   validator: (uname) {
                     if (uname!.isEmpty ||
@@ -48,8 +55,7 @@ class _Reg_statefulState extends State<Reg_stateful> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Phone Number'),
+                      border: OutlineInputBorder(), hintText: 'Phone Number'),
                   validator: (num) {
                     if (num!.isEmpty || num.length != 10) {
                       return 'Phone number should have 10 digits/ field must not be empty';
@@ -62,15 +68,29 @@ class _Reg_statefulState extends State<Reg_stateful> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextFormField(
+                  obscuringCharacter: "*",
+                  obscureText: passwordhidden,
                   validator: (password) {
                     pass = password;
                     if (password!.isEmpty || password.length < 6) {
                       return 'Password must not be empty/ password length must be > 6';
                     } else {
                       return null;
-                    }
-                  },
-                  decoration: const InputDecoration(
+                    }},
+                  decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              if(passwordhidden == true){
+                                passwordhidden = false;
+                              }else{
+                                passwordhidden = true;
+                              }
+                            });
+                          },
+                          icon: Icon(passwordhidden == true
+                              ? Icons.visibility_off_sharp
+                              : Icons.visibility)),
                       border: OutlineInputBorder(),
                       hintText: 'Password'),
                 ),
@@ -86,21 +106,21 @@ class _Reg_statefulState extends State<Reg_stateful> {
                     }
                   },
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Password'),
+                      border: OutlineInputBorder(), hintText: 'Password'),
                 ),
               ),
-              ElevatedButton(onPressed: () {
-                final valid = formkey.currentState!.validate();
-                if(valid){
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context)=>Login_stateful()));
-                }else{
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Inavlid datas'))
-                  );
-                }
-              }, child: Text("Login"))
+              ElevatedButton(
+                  onPressed: () {
+                    final valid = formkey.currentState!.validate();
+                    if (valid) {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Login_stateful()));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Inavlid datas')));
+                    }
+                  },
+                  child: Text("Login"))
             ],
           ),
         ),
