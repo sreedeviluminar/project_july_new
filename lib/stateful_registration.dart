@@ -118,8 +118,7 @@ class _Reg_statefulState extends State<Reg_stateful> {
                         cpasshidden= true;
                       }
                     });
-                  },
-                      icon: Icon(cpasshidden== true?
+                  },icon: Icon(cpasshidden== true?
                       Icons.visibility_off_sharp:Icons.visibility))),
                 ),
               ),
