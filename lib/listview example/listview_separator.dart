@@ -24,14 +24,14 @@ class ListView_Separated extends StatelessWidget {
           },
           separatorBuilder: (context,index){
             if(index % 4 == 0) {
-              return const Divider(
-                color: Colors.red,
+              return  Divider(
+                color: Colors.primaries[index % Colors.primaries.length],
                 thickness: 3,);
             }else{
               return SizedBox();
             }
           },
-          itemCount: 15),
+          itemCount: 30),
     );
   }
 }
