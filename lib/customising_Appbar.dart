@@ -30,18 +30,25 @@ class AppBar1 extends StatelessWidget {
             const Icon(Icons.search_rounded),
             PopupMenuButton(itemBuilder: (context) {
               return [
-                const PopupMenuItem(child: Text("New BroadCast")),
-                const PopupMenuItem(child: Text("New Group")),
+                const PopupMenuItem(
+                    child: Text("New BroadCast")),
+                const PopupMenuItem(
+                    child: Text("New Group")),
               ];
             }),
           ],
           bottom: PreferredSize(
               preferredSize: Size.fromHeight(AppBar().preferredSize.height),
-              child: Container(
-                child:  const TabBar(
+              child:  TabBar(
+                  indicatorSize: TabBarIndicatorSize.label,
+                  isScrollable: true,
+                  labelPadding: EdgeInsets.symmetric(horizontal: 20),
                   tabs: [
-                    Tab(
-                      icon:FaIcon(FontAwesomeIcons.users) ,
+                    Container(
+                      child: Tab(
+                        icon:FaIcon(FontAwesomeIcons.users) ,
+                      ),
+                      width: MediaQuery.of(context).size.width/24,
                     ),
                     Tab(
                       text:"Chats" ,
@@ -54,7 +61,7 @@ class AppBar1 extends StatelessWidget {
                     )
                   ],
                 ),
-              )),
+              )
         ),
         body: TabBarView(
             children: [
