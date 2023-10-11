@@ -21,13 +21,34 @@ class ProductMain extends StatelessWidget {
       ),
       body: GridView(
         padding: const EdgeInsets.all(15),
+
         /// products list le oro map um one by one ayit  product il varum since list.map() is iterable
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        children: products
-            .map((product) => InkWell(
-                  onTap: () => Navigator.of(context)
-                      .pushNamed('details', arguments: product['id']),
-                  child: Card(
+        gridDelegate:
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        // children: products.map((product) => InkWell(
+        //           onTap: () => Navigator.of(context)
+        //               .pushNamed('details', arguments: product['id']),
+        //           child: Card(
+        //             child: Column(
+        //               children: [
+        //                 Container(
+        //                     height: 100,
+        //                     decoration: BoxDecoration(
+        //                         image: DecorationImage(
+        //                             fit: BoxFit.contain,
+        //                             image: NetworkImage(product['image'])))),
+        //                 Text(product['name']),
+        //                 Text('${product['price']}\$'),
+        //               ],
+        //             ),
+        //           ),
+        //         ))
+        //     .toList(),
+        children: List.generate(
+            products.length,
+            (index) => InkWell(
+              onTap: ()=> Navigator.of(context).pushNamed('details', arguments: products[index]['id']),
+              child: Card(
                     child: Column(
                       children: [
                         Container(
@@ -35,14 +56,13 @@ class ProductMain extends StatelessWidget {
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     fit: BoxFit.contain,
-                                    image: NetworkImage(product['image'])))),
-                        Text(product['name']),
-                        Text('${product['price']}\$'),
+                                    image: NetworkImage(products[index]['image'])))),
+                        Text(products[index]['name']),
+                        Text('${products[index]['price']}\$'),
                       ],
                     ),
                   ),
-                ))
-            .toList(),
+            )),
       ),
     );
   }
