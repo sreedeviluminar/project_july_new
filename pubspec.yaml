@@ -40,7 +40,7 @@ dependencies:
   carousel_slider: ^4.2.1
   introduction_screen: ^3.1.12
   flutter_custom_clippers: ^2.1.0
-
+  readmore: ^2.2.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -89,10 +89,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Billabong
+      fonts:
+        - asset: assets/fonts/Billabong.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
