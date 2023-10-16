@@ -27,7 +27,7 @@ class Media extends StatelessWidget {
       ),
       body: Container(
         color: Colors.yellow,
-        height: height * 0.6, //half of the height size
+        height: height *.3, //half of the height size
         width: width * 0.5, //half of the width size
       ),
     );

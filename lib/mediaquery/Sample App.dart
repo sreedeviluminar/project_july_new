@@ -44,8 +44,7 @@ class _MediaQueryWidgetState extends State<_MediaQueryWidget> {
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
         children: <Widget>[
           const Center(
             child: Padding(

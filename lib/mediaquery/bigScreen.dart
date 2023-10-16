@@ -24,9 +24,7 @@ class BigScreen extends StatelessWidget {
                       child: Container(
                       //  height: 80,
                         color: Colors.deepPurple[400],
-                      ),
-                    ),
-                  ),
+                      ),),),
                   // comment section & recommended videos
                   Expanded(
                     child: ListView.builder(
@@ -38,11 +36,7 @@ class BigScreen extends StatelessWidget {
                             color: Colors.deepPurple[300],
                             height: 120,
                           ),
-                        );
-                      },
-                    ),
-                  )
-                ],
+                        );},),)],
               ),
             ),
             //second column
