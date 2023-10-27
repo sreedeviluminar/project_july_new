@@ -40,9 +40,12 @@ class _Contact_BookState extends State<Contact_Book> {
                     trailing: Wrap(
                       children: [
                         IconButton(
-                            onPressed: () {}, icon: const Icon(Icons.edit)),
+                            onPressed: () => showSheet(contacts[index]['id']),
+                            icon: const Icon(Icons.edit)),
                         IconButton(
-                            onPressed: () {}, icon: const Icon(Icons.delete))
+                            onPressed: () =>
+                                deleteContact(contacts[index]['id']),
+                            icon: const Icon(Icons.delete))
                       ],
                     ),
                   ),
@@ -59,6 +62,13 @@ class _Contact_BookState extends State<Contact_Book> {
   final num_controller = TextEditingController();
 
   void showSheet(int? id) {
+    if (id != null) {
+      final existingcontact =
+          contacts.firstWhere((element) => element['id'] == id);
+      name_controller.text = existingcontact['cname'];
+      num_controller.text = existingcontact['cnumber'];
+    }
+
     showModalBottomSheet(
         isScrollControlled: true,
         context: context,
@@ -89,14 +99,14 @@ class _Contact_BookState extends State<Contact_Book> {
                         createContact(name_controller.text, num_controller.text);
                       }
                       if (id != null) {
-                        //updateContact();
+                        updateContact(id);
                       }
                       name_controller.text = "";
                       num_controller.text = "";
                       Navigator.of(context).pop();
                     },
                     child:
-                        Text(id == null ? "Create Contact" : "Update Contact"))
+                    Text(id == null ? "Create Contact" : "Update Contact"))
               ],
             ),
           );
@@ -120,5 +130,37 @@ class _Contact_BookState extends State<Contact_Book> {
       contacts = mycontactss;
       isLoading = false;
     });
+  }
+
+  Future<void> updateContact(int id) async {
+    await SQL_Functions.updateContactt(
+        id, name_controller.text, num_controller.text);
+    readContact_and_refresh_Ui(); // to update the list after updating contact
+  }
+
+  Future<void> deleteContact(int id) async {
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text('Delete Contact ?'),
+        content: const Text('Do You want to delete the contact!!!!'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () async {
+              await SQL_Functions.removeContact(id);
+              readContact_and_refresh_Ui();
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text("SuccessFully Deleted")));
+              Navigator.pop(context);
+            },
+            child: const Text('Yes'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('No'),
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -12,7 +12,8 @@ class SQL_Functions {
 
   //create Table
   static Future<void> createTable(sql.Database db) async {
-    await db.execute('CREATE TABLE contact (id INTEGER PRIMARY KEY AUTO INCREMENT NOT NULL, cname TEXT, cnumber TEXT)');
+    await db.execute(
+        'CREATE TABLE contact (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, cname TEXT, cnumber TEXT)');
   }
 
   //insert new data to db
@@ -28,5 +29,25 @@ class SQL_Functions {
   static Future<List<Map<String, dynamic>>> readContacts() async {
     final db = await SQL_Functions.openDb();
     return db.query('contact', orderBy: 'id');
+  }
+
+//to update a single value from
+  static Future<int> updateContactt(int id, String name, String num) async {
+    final db = await SQL_Functions.openDb();
+    final updateddata = {
+      'cname': name,
+      'cnumber': num,
+    };
+    final updatedid = db.update('contact', updateddata, where: 'id=?', whereArgs: [id]);
+    return updatedid;
+  }
+
+  static Future<void> removeContact(int id) async {
+    final db = await SQL_Functions.openDb();
+    try {
+      await db.delete('contact', where: 'id=?', whereArgs: [id]);
+    } catch (e) {
+      print('Something went wrong $e');
+    }
   }
 }
