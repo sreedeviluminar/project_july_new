@@ -20,8 +20,7 @@ class SQL_Functions {
   static Future<int> addnewContact(String name, String number) async {
     final db = await SQL_Functions.openDb(); // database open
     final data = {"cname": name, "cnumber": number};
-    final id = await db.insert('contact', data,
-        conflictAlgorithm: ConflictAlgorithm.replace);
+    final id = await db.insert('contact', data, conflictAlgorithm: ConflictAlgorithm.replace);
     return id;
   }
 

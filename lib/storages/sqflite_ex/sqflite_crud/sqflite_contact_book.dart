@@ -114,8 +114,9 @@ class _Contact_BookState extends State<Contact_Book> {
   }
 
   Future<void> createContact(String name, String number) async {
-    await SQL_Functions.addnewContact(name, number);
-    readContact_and_refresh_Ui();
+   int id =  await SQL_Functions.addnewContact(name, number);
+   print(id);
+   readContact_and_refresh_Ui();
   }
 
   @override
@@ -133,8 +134,7 @@ class _Contact_BookState extends State<Contact_Book> {
   }
 
   Future<void> updateContact(int id) async {
-    await SQL_Functions.updateContactt(
-        id, name_controller.text, num_controller.text);
+    await SQL_Functions.updateContactt(id, name_controller.text, num_controller.text);
     readContact_and_refresh_Ui(); // to update the list after updating contact
   }
 
