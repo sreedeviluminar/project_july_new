@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "490313053840",
+    "project_id": "my-project-july-402304",
+    "storage_bucket": "my-project-july-402304.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490313053840:android:7ded47d60789387c7cca15",
+        "android_client_info": {
+          "package_name": "com.sreedevi.luminar_july"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDLdz7qegczVSzzxCOcaOUwrnZ_zwzd-8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

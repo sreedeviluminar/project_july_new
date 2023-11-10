@@ -22,11 +22,12 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    namespace "com.luminar.project_july_new"
+    namespace "com.sreedevi.luminar_july"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion "25.1.8937393"
     compileOptions {
@@ -36,7 +37,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.luminar.project_july_new"
+        applicationId "com.sreedevi.luminar_july"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion 20
