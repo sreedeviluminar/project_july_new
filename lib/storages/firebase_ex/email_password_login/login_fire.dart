@@ -12,7 +12,7 @@ void main() async {
   await Firebase.initializeApp(
       options: const FirebaseOptions(
           apiKey: "AIzaSyBDLdz7qegczVSzzxCOcaOUwrnZ_zwzd-8",
-          appId: "1:490313053840:android:7ded47d60789387c7cca15",
+          appId: "1:490313053840:android:7e09d6d151562af47cca15",
           messagingSenderId: '',
           projectId: "my-project-july-402304"));
   User? user = FirebaseAuth.instance.currentUser;
